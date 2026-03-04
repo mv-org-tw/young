@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Young | 個人首頁</title>
+    <title>Young | 連結未來</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -11,9 +11,16 @@
             --背景深: #050b18;
             --卡片背景: rgba(15, 23, 42, 0.9);
             --文字主色: #f8fafc;
+            --圖標懸停背景: #ffffff;
+            --圖標懸停色: #000000;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'PingFang TC', sans-serif;
+        }
 
         body {
             background-color: var(--背景深);
@@ -26,21 +33,22 @@
 
         .glass-card {
             background: var(--卡片背景);
-            padding: 40px 20px;
-            border-radius: 30px;
+            padding: 40px 30px;
+            border-radius: 40px;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            max-width: 500px;
+            max-width: 550px;
             width: 90%;
             text-align: center;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.6);
         }
 
-        h2 { color: var(--主色調); margin-bottom: 20px; font-size: 2rem; }
-        p { margin-bottom: 30px; opacity: 0.8; }
+        h2 { font-size: 2.2rem; color: var(--主色調); margin-bottom: 20px; }
+        p { margin-bottom: 35px; opacity: 0.8; line-height: 1.8; }
 
-        /* 圖標排版 */
+        /* 12 個圖標自動換行排版系統 */
         .social-grid {
             display: flex;
-            flex-wrap: wrap;
+            flex-wrap: wrap; /* 核心：手機寬度不夠時自動換行 */
             justify-content: center;
             gap: 15px;
         }
@@ -53,22 +61,25 @@
             justify-content: center;
             align-items: center;
             font-size: 1.5rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             color: #ffffff;
             text-decoration: none;
-            transition: 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
         }
 
-        /* 黑白切換特效 */
+        /* 官方黑白兩色切換效果 */
         .social-btn:hover {
-            background: #ffffff;
-            color: #000000;
-            transform: translateY(-5px);
+            background: var(--圖標懸停背景);
+            color: var(--圖標懸停色);
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
         }
 
         @media (max-width: 480px) {
-            .social-btn { width: 45px; height: 45px; font-size: 1.2rem; }
+            .social-btn { width: 48px; height: 48px; font-size: 1.2rem; }
+            .social-grid { gap: 10px; }
         }
     </style>
 </head>
@@ -76,12 +87,12 @@
 
     <div class="glass-card">
         <h2>連結未來</h2>
-        <p>技術的探索不應止步於此</p>
+        <p>技術的探索不應止步於此，我期待與更多優秀的靈魂產生共鳴</p>
         
         <div class="social-grid">
             <a href="https://www.instagram.com/2010.young/" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
             <a href="mailto:young@mvo.org.tw" class="social-btn"><i class="fas fa-envelope"></i></a>
-            <a href="https://www.facebook.com/profile.php?id=100072979261073" target="_blank" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.facebook.com/2010young" target="_blank" class="social-btn"><i class="fab fa-facebook-f"></i></a>
             <a href="https://www.youtube.com/@2010young" target="_blank" class="social-btn"><i class="fab fa-youtube"></i></a>
             <a href="https://www.threads.net/@2010.young" target="_blank" class="social-btn"><i class="fab fa-threads"></i></a>
             <a href="https://x.com/2010young" target="_blank" class="social-btn"><i class="fab fa-x-twitter"></i></a>
