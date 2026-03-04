@@ -17,37 +17,37 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif; }
         html { scroll-behavior: smooth; }
-        body { background-color: var(--背景深); color: var(--文字主色); line-height: 2; overflow-x: hidden; width: 100%; }
+        body { background-color: var(--背景深); color: var(--文字主色); line-height: 1.8; overflow-x: hidden; width: 100%; }
 
-        /* 背景流光 */
+        /* 動態背景 */
         body::before {
             content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.05) 0%, transparent 70%);
+            background: radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.08) 0%, transparent 70%);
             z-index: -1; pointer-events: none;
         }
 
-        /* 英雄區塊 */
+        /* 1. 英雄區塊 */
         .hero {
             min-height: 100vh; width: 100%;
-            background: linear-gradient(rgba(5, 11, 24, 0.75), rgba(5, 11, 24, 1)), url('https://i.meee.com.tw/kFuVCHM.jpg');
+            background: linear-gradient(rgba(5, 11, 24, 0.8), rgba(5, 11, 24, 1)), url('https://i.meee.com.tw/kFuVCHM.jpg');
             background-size: cover; background-position: center; background-attachment: fixed;
             display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 40px 20px;
         }
 
         .avatar-container {
-            width: clamp(120px, 20vw, 180px); height: clamp(120px, 20vw, 180px);
-            margin-bottom: 30px; animation: heroFloat 4s ease-in-out infinite;
+            width: clamp(130px, 22vw, 190px); height: clamp(130px, 22vw, 190px);
+            margin-bottom: 35px; animation: heroFloat 4s ease-in-out infinite;
         }
 
-        @keyframes heroFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        @keyframes heroFloat { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-15px) scale(1.05); } }
 
         .avatar {
             width: 100%; height: 100%; border-radius: 50%; border: 4px solid var(--主色調);
-            box-shadow: 0 0 50px rgba(0, 212, 255, 0.4); backdrop-filter: blur(10px);
+            box-shadow: 0 0 60px rgba(0, 212, 255, 0.5); backdrop-filter: blur(10px);
         }
 
         .profile-title {
-            font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 900;
+            font-size: clamp(2.8rem, 9vw, 5.5rem); font-weight: 900; letter-spacing: 8px;
             background: linear-gradient(90deg, var(--主色調), var(--次色調), var(--主色調));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             background-size: 200% auto; animation: shine 3s linear infinite;
@@ -55,36 +55,38 @@
 
         @keyframes shine { to { background-position: 200% center; } }
 
-        .container { width: 90%; max-width: 1100px; margin: 0 auto; padding: 100px 0; }
-        .reveal { opacity: 0; transform: translateY(50px); transition: all 1.2s cubic-bezier(0.17, 0.55, 0.55, 1); }
+        /* 通用容器與區塊 */
+        .container { width: 90%; max-width: 1000px; margin: 0 auto; padding: 50px 0; }
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.2, 0.6, 0.2, 1); margin-bottom: 150px; }
         .reveal.active { opacity: 1; transform: translateY(0); }
-        section { margin-bottom: 300px; width: 100%; }
+
+        h2 { font-size: clamp(1.8rem, 5vw, 2.5rem); color: var(--主色調); margin-bottom: 35px; display: flex; align-items: center; gap: 15px; }
+        h2::after { content: ""; height: 2px; flex: 1; background: linear-gradient(90deg, var(--主色調), transparent); }
 
         .glass-card {
-            background: var(--卡片背景); padding: clamp(30px, 5vw, 60px);
-            border-radius: 40px; border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 40px 100px rgba(0,0,0,0.7);
+            background: var(--卡片背景); padding: 45px; border-radius: 35px;
+            border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 30px 60px rgba(0,0,0,0.5);
         }
 
-        /* 12 個連結的自動適配網格 */
-        .social-links-grid {
-            display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 40px;
-        }
+        p { font-size: 1.15rem; color: #e2e8f0; margin-bottom: 20px; text-align: justify; }
 
+        /* 網格系統 */
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .info-item { background: rgba(255, 255, 255, 0.03); padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); }
+        .info-item h3 { color: var(--主色調); margin-bottom: 15px; }
+
+        /* 12個連結樣式 */
+        .social-links-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; margin-top: 40px; }
         .social-btn {
-            width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center;
-            font-size: 1.6rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #ffffff; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); text-decoration: none; backdrop-filter: blur(10px);
+            width: 65px; height: 65px; border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            font-size: 1.8rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); text-decoration: none;
         }
+        .social-btn:hover { background: #ffffff; color: #000000; transform: translateY(-10px) rotate(8deg); box-shadow: 0 15px 35px rgba(0, 212, 255, 0.4); }
 
-        .social-btn:hover { background: #ffffff; color: #000000; transform: translateY(-8px) scale(1.1); box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4); }
+        footer { text-align: center; padding: 100px 20px; color: var(--文字淡色); font-size: 0.9rem; letter-spacing: 3px; }
 
-        .org-card { border-left: 5px solid var(--主色調); padding-left: 30px; margin: 40px 0; }
-
-        @media (max-width: 600px) {
-            .social-btn { width: 52px; height: 52px; font-size: 1.3rem; }
-            section { margin-bottom: 200px; }
-        }
+        @media (max-width: 600px) { .glass-card { padding: 25px; } .social-btn { width: 55px; height: 55px; font-size: 1.4rem; } }
     </style>
 </head>
 <body>
@@ -92,26 +94,64 @@
     <div class="hero">
         <div class="avatar-container"><img src="https://i.meee.com.tw/jXmhwh3.png" class="avatar"></div>
         <h1 class="profile-title">Young</h1>
-        <p style="color: var(--文字淡色); letter-spacing: 5px; margin-top: 10px;">元界創想 · 量元計畫 創始人</p>
+        <p style="color: var(--文字淡色); letter-spacing: 6px; font-weight: 300;">元界創想 · 量元計畫 創始人</p>
     </div>
 
     <div class="container">
+
         <section class="reveal">
-            <h2 style="color: var(--主色調); margin-bottom: 40px;">核心理念</h2>
+            <h2><i class="fas fa-lightbulb"></i> 自主學習者宣言</h2>
             <div class="glass-card">
-                <p>我是十五歲的自主學習者，致力於在傳統體制之外，開闢一條屬於創造者的道路。</p>
+                <p>我是一名年僅十五歲的自主學習者，始終深信傳統教育體制不應是限制個人潛能的邊界。在我的數位探索旅程中，我不斷嘗試將理論知識轉化為具體的實踐產出，從底層架構的邏輯推演到虛擬環境的場景實現，每一行代碼都承載著我對未來科技的無限好奇。我渴望在傳統路徑之外，開闢一條屬於新世代創造者的獨特道路，透過技術與思維的雙重革命，定義屬於我這一代的數位新價值。</p>
             </div>
         </section>
 
         <section class="reveal">
-            <h2>組織使命</h2>
-            <div class="org-card">
-                <h3 style="color: var(--主色調);">元界創想 MVO</h3>
-                <p>METAVERSE VISION ORGANIZATION - 專注於虛擬世界的架構與標準定義。</p>
+            <h2><i class="fas fa-vr-cardboard"></i> 元界創想 MVO</h2>
+            <div class="glass-card">
+                <p>元界創想（Metaverse Vision Organization）是我發起的核心組織，專注於定義虛擬空間的交互標準。我們不滿足於現有的數位體驗，而是致力於探索高度沈浸感與去中心化協作的可能性。在這裡，我們透過跨學科的合作，將虛擬實境、區塊鏈與數據架構進行深度整合，目標是打造一個真正屬於開發者與使用者的自由數位國度，讓每個參與者都能在 MVO 的願景下，找到自己在元宇宙中的定位與貢獻路徑。</p>
             </div>
-            <div class="org-card" style="border-left-color: var(--次色調);">
-                <h3 style="color: var(--次色調);">量元計畫 MQI</h3>
-                <p>METAQUANT INITIATIVE - 培養具備量化思維與技術領導力的新世代團隊。</p>
+        </section>
+
+        <section class="reveal">
+            <h2><i class="fas fa-microchip"></i> 量元計畫 MQI</h2>
+            <div class="glass-card">
+                <p>量元計畫（MetaQuant Initiative）是一項專為培養新世代技術領袖而生的學生團隊。我們深知單打獨鬥的時代已經過去，未來的科技競爭取決於群體智慧的整合。MQI 透過建立嚴謹的量化思維模型與技術引領機制，帶領成員從零開始接觸系統化的開發流程與專案管理。我們不僅僅是在學習技術，更是在學習如何在高壓且多變的環境中，運用邏輯與理性去克服複雜的挑戰，進而將純粹的靈感轉化為具有社會影響力的成品。</p>
+            </div>
+        </section>
+
+        <section class="reveal">
+            <h2><i class="fas fa-code"></i> 技術堆疊與研發</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <h3>前端與交互開發</h3>
+                    <p>我對網頁與應用程式的交互介面有著極致的追求。從基礎的 HTML5/CSS3 到現代化的框架應用，我致力於打造兼具視覺張力與使用流暢度的數位介面。每一場動畫特效的選用與顏色配置，都是為了讓使用者在操作時，能感受到技術背後的溫度與生命力。</p>
+                </div>
+                <div class="info-item">
+                    <h3>後端邏輯與安全</h3>
+                    <p>系統的穩定度是創新的基石。在開發 MVO 相關專案時，我投入了大量心力研究數據流的處理與後端架構的安全性。確保每一個數據請求都能被精確且安全地處理，是我對技術品質的底線要求。我不斷優化算法，力求在效率與負載之間達到最佳平衡。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="reveal">
+            <h2><i class="fas fa-network-wired"></i> 數位生態系視野</h2>
+            <div class="glass-card">
+                <p>在我的觀點中，數位生態系不應只是孤立的網站或軟體，而是一個有機的動態循環系統。透過將社交媒體、開發者社群與實體應用相結合，我正在建立一個閉環的溝通網絡。這讓 MVO 與 MQI 的資訊能夠在不同的平台上快速傳遞與發酵，吸引來自全球各地的合作夥伴。我們追求的是一種透明、開放且具備自我演化能力的生態環境，讓技術能真正回歸到服務人類需求的核心價值，解決現實世界中的資訊不對稱與效率問題。</p>
+            </div>
+        </section>
+
+        <section class="reveal">
+            <h2><i class="fas fa-user-shield"></i> 創新領導力</h2>
+            <div class="glass-card">
+                <p>作為多個組織的創始人，領導力對我而言意味著「願景的傳遞」而非「權力的分配」。在管理 MQI 團隊時，我優先考慮如何激發成員的自主創造力，讓每個人都能在專案中找到成就感。我倡導一種高度透明且鼓勵冒險的團隊文化，容許失敗但要求從錯誤中快速迭代。這種領導風格確保了我們在面對技術難關時，依然能保持高度的熱情與凝聚力，不斷突破自我極限，產出令業界驚艷的創新成果。</p>
+            </div>
+        </section>
+
+        <section class="reveal">
+            <h2><i class="fas fa-rocket"></i> 未來展望與合作</h2>
+            <div class="glass-card">
+                <p>展望二零二六及更遠的未來，我將繼續深耕元宇宙底層技術與人工智慧的結合應用。我期待能與更多來自不同領域的高端人才、企業或學術機構產生深度碰撞。無論你是開發者、設計師、或者是對未來數位趨勢充滿熱情的投資者，我都歡迎你透過下方提供的聯絡途徑與我取得連繫。讓我們共同攜手，用技術重新定義世界的邊界，讓想像力在現實與虛擬的交界處，綻放出最為奪目的光芒。技術探索永無止境，前行之路才剛剛開始。</p>
             </div>
         </section>
 
@@ -134,10 +174,11 @@
                 </div>
             </div>
         </section>
+
     </div>
 
     <footer>
-        <p>YOUNG | 二零二六 · 重新定義世界</p>
+        <p>YOUNG © 2026 | 元界創想與量元計畫創始人</p>
     </footer>
 
     <script>
