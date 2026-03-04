@@ -101,10 +101,6 @@
             letter-spacing: 5px;
         }
 
-        @keyframes shine {
-            to { background-position: 200% center; }
-        }
-
         .subtitle {
             font-size: clamp(1rem, 3vw, 1.5rem);
             color: var(--文字淡色);
@@ -161,110 +157,50 @@
             text-align: justify;
         }
 
-        .philosophy-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 60px;
-        }
-
-        .phil-item {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 40px 20px;
-            border-radius: 30px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .phil-item:hover {
-            transform: translateY(-15px);
-            background: rgba(0, 212, 255, 0.08);
-            border-color: var(--主色調);
-        }
-
-        .phil-item i {
-            font-size: 3rem;
-            color: var(--主色調);
-            margin-bottom: 25px;
-        }
-
-        .org-card {
-            position: relative;
-            padding-left: clamp(20px, 4vw, 50px);
-            border-left: 5px solid var(--主色調);
-            margin-bottom: 80px;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-
-        .skill-list {
-            list-style: none;
-        }
-
-        .skill-list li {
-            margin-bottom: 20px;
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            font-size: 1.15rem;
-        }
-
-        .skill-list li::before {
-            content: "◆";
-            color: var(--主色調);
-            font-size: 0.9rem;
-            margin-top: 5px;
-        }
-
-        /* --- 新增：社交媒體按鈕樣式 --- */
+        /* 社交媒體圖標網格 - 自動適配核心 */
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            align-items: center;
+            gap: 15px;
             margin: 40px 0;
-            flex-wrap: wrap;
+            flex-wrap: wrap; /* 讓圖標在手機上自動換行 */
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .social-icon {
-            width: 65px;
-            height: 65px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             color: #ffffff;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(8px);
         }
 
-        /* 黑白兩色切換效果 */
+        /* 黑白兩色切換 Hover 效果 */
         .social-icon:hover {
-            background: #ffffff; /* 變為白底 */
-            color: #000000;    /* 變為黑圖標 */
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
-            border-color: var(--主色調);
+            background: #ffffff; /* 變白底 */
+            color: #000000;    /* 變黑圖標 */
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+            border-color: #ffffff;
         }
 
         .social-icon i {
             transition: transform 0.3s ease;
         }
 
-        .social-icon:hover i {
-            transform: scale(1.2);
-        }
-
         .btn-wrapper {
-            margin-top: 40px;
+            margin-top: 50px;
             display: flex;
             justify-content: center;
         }
@@ -282,23 +218,17 @@
             box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
         }
 
-        .link-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4);
-        }
-
         footer {
             text-align: center;
-            padding: 150px 20px;
-            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            padding: 120px 20px;
             color: var(--文字淡色);
             letter-spacing: 2px;
         }
 
         @media (max-width: 600px) {
-            section { margin-bottom: 200px; }
-            .hero { padding-top: 80px; }
-            .social-icon { width: 55px; height: 55px; font-size: 1.3rem; }
+            section { margin-bottom: 150px; }
+            .social-icon { width: 48px; height: 48px; font-size: 1.2rem; }
+            .social-links { gap: 12px; }
         }
     </style>
 </head>
@@ -310,9 +240,6 @@
         </div>
         <h1 class="profile-title">Young</h1>
         <p class="subtitle">元界創想 · 量元計畫 創始人</p>
-        <div class="scroll-indicator" style="position: absolute; bottom: 40px; animation: bounce 2s infinite; font-size: 2rem; color: var(--主色調);">
-            <i class="fas fa-chevron-down"></i>
-        </div>
     </div>
 
     <div class="container">
@@ -321,96 +248,32 @@
             <h2>技術與實踐的融合</h2>
             <div class="glass-card">
                 <p>我是十五歲的自主學習者，致力於在傳統體制之外，開闢一條屬於創造者的道路</p>
-                <p>學習對我而言是一場永不停歇的實戰，從代碼的邏輯推演到硬體設備的架構配置，每一環節都是構築未來願景的關鍵</p>
-                <p>透過領導不同維度的組織，我將個人的技術熱情轉化為系統性的協作流程，與夥伴共同探索虛擬世界的無限可能</p>
-                
-                <div class="philosophy-grid">
-                    <div class="phil-item">
-                        <i class="fas fa-terminal"></i>
-                        <h3>實戰領先</h3>
-                        <p>以解決真實問題為導向，拒絕紙上談兵的理論堆砌</p>
-                    </div>
-                    <div class="phil-item">
-                        <i class="fas fa-cubes"></i>
-                        <h3>架構思維</h3>
-                        <p>從底層邏輯出發，建構穩定且具備擴充性的數位系統</p>
-                    </div>
-                    <div class="phil-item">
-                        <i class="fas fa-project-diagram"></i>
-                        <h3>願景引領</h3>
-                        <p>帶領青年團隊，在元宇宙的浪潮中精確定位技術價值</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="reveal">
-            <h2>元界創想 MVO</h2>
-            <div class="org-card">
-                <p style="font-size: 1.5rem; color: var(--主色調); font-weight: bold;">METAVERSE VISION ORGANIZATION</p>
-                <p>這是一個以技術研發為核心的非營利組織，目標是定義未來數位空間的交互標準</p>
-                <p>在我的推動下，組織專注於高性能虛擬環境的搭建與技術孵化，力求將概念轉化為可觸及的實體成果</p>
-                <p>我們深信技術的力量源於分享與共創，透過開放的協作模式，MVO 正在聚集更多具備實戰能力的開發者</p>
-            </div>
-        </section>
-
-        <section class="reveal">
-            <h2>量元計畫 MQI</h2>
-            <div class="org-card" style="border-left-color: var(--次色調);">
-                <p style="font-size: 1.5rem; color: var(--次色調); font-weight: bold;">METAQUANT INITIATIVE</p>
-                <p>量元計畫是一個致力於培養新一代技術領袖的學生團隊，強調數據驅動的決策與執行力</p>
-                <p>我們在伺服器運維、量化分析與團隊管理中尋求最優解，並將這套流程標準化以利傳承</p>
-                <p>在這裡，每一位成員都能在真實的專案中磨練技能，從實踐中理解技術與社會的交互影響</p>
-            </div>
-        </section>
-
-        <section class="reveal">
-            <h2>技術實力與研發領域</h2>
-            <div class="skills-grid">
-                <div class="glass-card">
-                    <h3 style="color: var(--主色調); margin-bottom: 30px;">基礎設施維運</h3>
-                    <ul class="skill-list">
-                        <li>伺服器實體硬體組裝、配置優化與故障診斷維修</li>
-                        <li>大型 Minecraft 伺服器生態系開發、架構規劃與資源分配</li>
-                        <li>自動化運維面板部署與雲端資源管理的深度實踐</li>
-                    </ul>
-                </div>
-                <div class="glass-card">
-                    <h3 style="color: var(--主色調); margin-bottom: 30px;">軟硬體開發</h3>
-                    <ul class="skill-list">
-                        <li>Python 高效自動化腳本編寫與系統集成開發</li>
-                        <li>JavaScript 基礎應用與現代化網頁前端技術實作</li>
-                        <li>HTML / CSS 響應式排版設計與使用者經驗優化</li>
-                    </ul>
-                </div>
+                <p>透過領導不同維度的組織，我將技術熱情轉化為系統性的協作流程，與夥伴共同探索虛擬世界的無限可能</p>
             </div>
         </section>
 
         <section class="reveal" style="text-align: center;">
             <div class="glass-card">
                 <h2 style="justify-content: center;">連結未來</h2>
-                <p>技術的探索不應止步於此，我期待與更多優秀的靈魂產生共鳴</p>
+                <p>探索元界創想與量元計畫的數位足跡</p>
                 
                 <div class="social-links">
-                    <a href="https://www.instagram.com/2010.young/" target="_blank" class="social-icon" title="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://threads.net/@2010.young" target="_blank" class="social-icon" title="Threads">
-                        <i class="fab fa-threads"></i>
-                    </a>
-                    <a href="https://github.com/2010young" target="_blank" class="social-icon" title="GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="mailto:young@mvo.org.tw" class="social-icon" title="Email">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                    <a href="https://discord.gg/mvo" target="_blank" class="social-icon" title="Discord">
-                        <i class="fab fa-discord"></i>
-                    </a>
+                    <a href="https://www.instagram.com/2010.young/" target="_blank" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:young@mvo.org.tw" class="social-icon" title="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.facebook.com/2010young" target="_blank" class="social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.youtube.com/@2010young" target="_blank" class="social-icon" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://threads.net/@2010.young" target="_blank" class="social-icon" title="Threads"><i class="fab fa-threads"></i></a>
+                    <a href="https://x.com/2010young" target="_blank" class="social-icon" title="X"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://www.tiktok.com/@2010young" target="_blank" class="social-icon" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://wa.me/message/YOUR_ID" target="_blank" class="social-icon" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://discord.gg/mvo" target="_blank" class="social-icon" title="Discord"><i class="fab fa-discord"></i></a>
+                    <a href="https://www.twitch.tv/2010young" target="_blank" class="social-icon" title="Twitch"><i class="fab fa-twitch"></i></a>
+                    <a href="https://t.me/young2010" target="_blank" class="social-icon" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="https://github.com/2010young" target="_blank" class="social-icon" title="GitHub"><i class="fab fa-github"></i></a>
                 </div>
 
                 <div class="btn-wrapper">
-                    <a href="https://linktr.ee/2010young" target="_blank" class="link-btn">查看所有 Linktree 連結</a>
+                    <a href="https://linktr.ee/2010young" target="_blank" class="link-btn">查看完整 Linktree</a>
                 </div>
             </div>
         </section>
@@ -423,18 +286,13 @@
     </footer>
 
     <script>
-        const observerOptions = { threshold: 0.15 };
+        const observerOptions = { threshold: 0.1 };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('active');
             });
         }, observerOptions);
-
-        document.querySelectorAll('.reveal').forEach(el => {
-            observer.observe(el);
-        });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
