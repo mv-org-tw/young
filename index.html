@@ -3,164 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Young | 元界創想與量元計畫創始人</title>
+    <title>Young | 個人首頁</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --主色調: #00d4ff;
-            --次色調: #0081ff;
             --背景深: #050b18;
-            --卡片背景: rgba(15, 23, 42, 0.85);
+            --卡片背景: rgba(15, 23, 42, 0.9);
             --文字主色: #f8fafc;
-            --文字淡色: #94a3b8;
         }
 
-        /* 基礎設置與自動適配 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
 
         body {
             background-color: var(--背景深);
             color: var(--文字主色);
-            line-height: 2;
-            overflow-x: hidden;
-            width: 100%;
-        }
-
-        /* 背景流光動畫 */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.05) 0%, transparent 70%);
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        /* 首屏區塊 */
-        .hero {
-            min-height: 100vh;
-            width: 100%;
-            background: linear-gradient(rgba(5, 11, 24, 0.75), rgba(5, 11, 24, 1)), 
-                        url('https://i.meee.com.tw/kFuVCHM.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        .avatar-container {
-            width: clamp(120px, 20vw, 180px);
-            height: clamp(120px, 20vw, 180px);
-            margin-bottom: 30px;
-            position: relative;
-            animation: heroFloat 4s ease-in-out infinite;
-        }
-
-        @keyframes heroFloat {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-20px) scale(1.05); }
-        }
-
-        .avatar {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 4px solid var(--主色調);
-            box-shadow: 0 0 50px rgba(0, 212, 255, 0.4);
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            transition: 0.5s;
-        }
-
-        .profile-title {
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            font-weight: 900;
-            margin-bottom: 15px;
-            background: linear-gradient(90deg, var(--主色調), var(--次色調), var(--主色調));
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shine 3s linear infinite;
-            letter-spacing: 5px;
-        }
-
-        .subtitle {
-            font-size: clamp(1rem, 3vw, 1.5rem);
-            color: var(--文字淡色);
-            letter-spacing: clamp(4px, 1vw, 8px);
-            margin-bottom: 40px;
-        }
-
-        /* 內容容器 */
-        .container {
-            width: 90%;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 100px 0;
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 1.2s cubic-bezier(0.17, 0.55, 0.55, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        section {
-            margin-bottom: 300px;
-            width: 100%;
-        }
-
-        h2 {
-            font-size: clamp(1.8rem, 5vw, 3rem);
-            margin-bottom: 60px;
-            color: var(--主色調);
-            display: flex;
-            align-items: center;
-            gap: 20px;
+            min-height: 100vh;
         }
 
         .glass-card {
             background: var(--卡片背景);
-            padding: clamp(30px, 5vw, 60px);
-            border-radius: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 40px 100px rgba(0,0,0,0.7);
+            padding: 40px 20px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
         }
 
-        /* 社交連結網格：自動換行適配 */
-        .social-links-grid {
+        h2 { color: var(--主色調); margin-bottom: 20px; font-size: 2rem; }
+        p { margin-bottom: 30px; opacity: 0.8; }
+
+        /* 圖標排版 */
+        .social-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
-            margin-top: 40px;
+            gap: 15px;
         }
 
         .social-btn {
-            width: 60px;
-            height: 60px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
@@ -169,78 +56,43 @@
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             color: #ffffff;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
-            backdrop-filter: blur(10px);
+            transition: 0.3s;
         }
 
-        /* 黑白兩色切換效果 */
+        /* 黑白切換特效 */
         .social-btn:hover {
             background: #ffffff;
             color: #000000;
-            transform: translateY(-8px) scale(1.1);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+            transform: translateY(-5px);
         }
 
-        footer {
-            text-align: center;
-            padding: 120px 20px;
-            color: var(--文字淡色);
-            letter-spacing: 2px;
-        }
-
-        @media (max-width: 600px) {
-            section { margin-bottom: 200px; }
-            .social-btn { width: 50px; height: 50px; font-size: 1.2rem; }
+        @media (max-width: 480px) {
+            .social-btn { width: 45px; height: 45px; font-size: 1.2rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="hero">
-        <div class="avatar-container">
-            <img src="https://i.meee.com.tw/jXmhwh3.png" alt="Young" class="avatar">
+    <div class="glass-card">
+        <h2>連結未來</h2>
+        <p>技術的探索不應止步於此</p>
+        
+        <div class="social-grid">
+            <a href="https://www.instagram.com/2010.young/" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
+            <a href="mailto:young@mvo.org.tw" class="social-btn"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=100072979261073" target="_blank" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.youtube.com/@2010young" target="_blank" class="social-btn"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.threads.net/@2010.young" target="_blank" class="social-btn"><i class="fab fa-threads"></i></a>
+            <a href="https://x.com/2010young" target="_blank" class="social-btn"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://www.tiktok.com/@2010young" target="_blank" class="social-btn"><i class="fab fa-tiktok"></i></a>
+            <a href="https://wa.me/qr/G7Y6D6ALV5O4O1" target="_blank" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://discord.com/users/928643883652612147" target="_blank" class="social-btn"><i class="fab fa-discord"></i></a>
+            <a href="https://www.twitch.tv/2010young" target="_blank" class="social-btn"><i class="fab fa-twitch"></i></a>
+            <a href="https://t.me/young2010" target="_blank" class="social-btn"><i class="fab fa-telegram-plane"></i></a>
+            <a href="https://github.com/2010young" target="_blank" class="social-btn"><i class="fab fa-github"></i></a>
         </div>
-        <h1 class="profile-title">Young</h1>
-        <p class="subtitle">元界創想 · 量元計畫 創始人</p>
     </div>
 
-    <div class="container">
-        <section class="reveal" style="text-align: center;">
-            <div class="glass-card">
-                <h2 style="justify-content: center;">連結未來</h2>
-                <p>技術的探索不應止步於此，我期待與更多優秀的靈魂產生共鳴</p>
-                
-                <div class="social-links-grid">
-                    <a href="https://www.instagram.com/2010.young/" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
-                    <a href="mailto:young@mvo.org.tw" class="social-btn"><i class="fas fa-envelope"></i></a>
-                    <a href="https://www.facebook.com/2010young" target="_blank" class="social-btn"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.youtube.com/@2010young" target="_blank" class="social-btn"><i class="fab fa-youtube"></i></a>
-                    <a href="https://www.threads.net/@2010.young" target="_blank" class="social-btn"><i class="fab fa-threads"></i></a>
-                    <a href="https://x.com/2010young" target="_blank" class="social-btn"><i class="fab fa-x-twitter"></i></a>
-                    <a href="https://www.tiktok.com/@2010young" target="_blank" class="social-btn"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://wa.me/message/YOUR_ID" target="_blank" class="social-btn"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://discord.gg/mvo" target="_blank" class="social-btn"><i class="fab fa-discord"></i></a>
-                    <a href="https://www.twitch.tv/2010young" target="_blank" class="social-btn"><i class="fab fa-twitch"></i></a>
-                    <a href="https://t.me/young2010" target="_blank" class="social-btn"><i class="fab fa-telegram-plane"></i></a>
-                    <a href="https://github.com/2010young" target="_blank" class="social-btn"><i class="fab fa-github"></i></a>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <footer>
-        <p>YOUNG | 元界創想與量元計畫創始人</p>
-        <p style="margin-top: 15px; font-size: 0.8rem; opacity: 0.4;">二零二六 · 以勇氣與技術重新定義世界</p>
-    </footer>
-
-    <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('active');
-            });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    </script>
 </body>
 </html>
