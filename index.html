@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Young | 元界創想與量元計畫創始人</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         :root {
             --主色調: #00d4ff;
@@ -15,159 +15,71 @@
             --文字淡色: #94a3b8;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif; }
         html { scroll-behavior: smooth; }
+        body { background-color: var(--背景深); color: var(--文字主色); line-height: 2; overflow-x: hidden; width: 100%; }
 
-        body {
-            background-color: var(--背景深);
-            color: var(--文字主色);
-            line-height: 2;
-            overflow-x: hidden;
-            width: 100%;
-        }
-
-        /* 背景動態光暈 */
+        /* 背景流光 */
         body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.05) 0%, transparent 70%);
-            z-index: -1;
-            pointer-events: none;
+            z-index: -1; pointer-events: none;
         }
 
-        /* 英雄區塊 Hero Section */
+        /* 英雄區塊 */
         .hero {
-            min-height: 100vh;
-            width: 100%;
-            background: linear-gradient(rgba(5, 11, 24, 0.75), rgba(5, 11, 24, 1)), 
-                        url('https://i.meee.com.tw/kFuVCHM.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 40px 20px;
+            min-height: 100vh; width: 100%;
+            background: linear-gradient(rgba(5, 11, 24, 0.75), rgba(5, 11, 24, 1)), url('https://i.meee.com.tw/kFuVCHM.jpg');
+            background-size: cover; background-position: center; background-attachment: fixed;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 40px 20px;
         }
 
         .avatar-container {
-            width: clamp(120px, 20vw, 180px);
-            height: clamp(120px, 20vw, 180px);
-            margin-bottom: 30px;
-            animation: heroFloat 4s ease-in-out infinite;
+            width: clamp(120px, 20vw, 180px); height: clamp(120px, 20vw, 180px);
+            margin-bottom: 30px; animation: heroFloat 4s ease-in-out infinite;
         }
 
-        @keyframes heroFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
+        @keyframes heroFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
 
         .avatar {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 4px solid var(--主色調);
-            box-shadow: 0 0 50px rgba(0, 212, 255, 0.4);
-            backdrop-filter: blur(10px);
+            width: 100%; height: 100%; border-radius: 50%; border: 4px solid var(--主色調);
+            box-shadow: 0 0 50px rgba(0, 212, 255, 0.4); backdrop-filter: blur(10px);
         }
 
         .profile-title {
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            font-weight: 900;
+            font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 900;
             background: linear-gradient(90deg, var(--主色調), var(--次色調), var(--主色調));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-size: 200% auto;
-            animation: shine 3s linear infinite;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-size: 200% auto; animation: shine 3s linear infinite;
         }
 
         @keyframes shine { to { background-position: 200% center; } }
 
-        /* 內容容器 */
-        .container {
-            width: 90%;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 100px 0;
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 1.2s cubic-bezier(0.17, 0.55, 0.55, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
+        .container { width: 90%; max-width: 1100px; margin: 0 auto; padding: 100px 0; }
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 1.2s cubic-bezier(0.17, 0.55, 0.55, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
         section { margin-bottom: 300px; width: 100%; }
 
         .glass-card {
-            background: var(--卡片背景);
-            padding: clamp(30px, 5vw, 60px);
-            border-radius: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: var(--卡片背景); padding: clamp(30px, 5vw, 60px);
+            border-radius: 40px; border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 0 40px 100px rgba(0,0,0,0.7);
         }
 
         /* 12 個連結的自動適配網格 */
         .social-links-grid {
-            display: flex;
-            flex-wrap: wrap; /* 自動換行關鍵 */
-            justify-content: center;
-            gap: 15px;
-            margin-top: 40px;
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 40px;
         }
 
         .social-btn {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.6rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #ffffff;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            text-decoration: none;
-            backdrop-filter: blur(10px);
+            width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            font-size: 1.6rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); text-decoration: none; backdrop-filter: blur(10px);
         }
 
-        .social-btn:hover {
-            background: #ffffff;
-            color: #000000;
-            transform: translateY(-8px) scale(1.1);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
-        }
+        .social-btn:hover { background: #ffffff; color: #000000; transform: translateY(-8px) scale(1.1); box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4); }
 
-        .org-card {
-            border-left: 5px solid var(--主色調);
-            padding-left: 30px;
-            margin: 40px 0;
-        }
-
-        footer {
-            text-align: center;
-            padding: 150px 20px;
-            color: var(--文字淡色);
-            letter-spacing: 2px;
-        }
+        .org-card { border-left: 5px solid var(--主色調); padding-left: 30px; margin: 40px 0; }
 
         @media (max-width: 600px) {
             .social-btn { width: 52px; height: 52px; font-size: 1.3rem; }
@@ -178,15 +90,12 @@
 <body>
 
     <div class="hero">
-        <div class="avatar-container">
-            <img src="https://i.meee.com.tw/jXmhwh3.png" alt="Young" class="avatar">
-        </div>
+        <div class="avatar-container"><img src="https://i.meee.com.tw/jXmhwh3.png" class="avatar"></div>
         <h1 class="profile-title">Young</h1>
         <p style="color: var(--文字淡色); letter-spacing: 5px; margin-top: 10px;">元界創想 · 量元計畫 創始人</p>
     </div>
 
     <div class="container">
-        
         <section class="reveal">
             <h2 style="color: var(--主色調); margin-bottom: 40px;">核心理念</h2>
             <div class="glass-card">
@@ -209,25 +118,22 @@
         <section class="reveal" style="text-align: center;">
             <div class="glass-card">
                 <h2 style="justify-content: center; margin-bottom: 30px;">連結未來</h2>
-                <p>技術的探索不應止步於此，我期待與更多優秀的靈魂產生共鳴</p>
-                
                 <div class="social-links-grid">
-                    <a href="https://www.threads.com/mvo_org" target="_blank" class="social-btn"><i class="fab fa-threads"></i></a>
-                    <a href="https://youtube.com/channel/UCasJEcLcT3-i4-zD5--1IFg?si=XpFOfFxgZ4aSNioE" target="_blank" class="social-btn"><i class="fab fa-youtube"></i></a>
-                    <a href="https://www.facebook.com/share/14Zyn5f9r9q/" target="_blank" class="social-btn"><i class="fab fa-facebook-f"></i></a>
-                    <a href="mailto:mv.org.tw@gmail.com" class="social-btn"><i class="fas fa-envelope"></i></a>
-                    <a href="https://instagram.com/mvo_org" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.twitch.tv/twmqi" target="_blank" class="social-btn"><i class="fab fa-twitch"></i></a>
-                    <a href="https://discord.gg/6rvS32H8dY" target="_blank" class="social-btn"><i class="fab fa-discord"></i></a>
-                    <a href="https://api.whatsapp.com/send?phone=886918733175" target="_blank" class="social-btn"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://tiktok.com/@tiktok._.young" target="_blank" class="social-btn"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://x.com/MQI_6666" target="_blank" class="social-btn"><i class="fab fa-x-twitter"></i></a>
-                    <a href="https://github.com/mv-org-tw" target="_blank" class="social-btn"><i class="fab fa-github"></i></a>
-                    <a href="https://web.telegram.org/YOUNGyoung" target="_blank" class="social-btn"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="https://www.threads.net/@mvo_org" target="_blank" class="social-btn"><i class="fa-brands fa-threads"></i></a>
+                    <a href="https://youtube.com/channel/UCasJEcLcT3-i4-zD5--1IFg?si=XpFOfFxgZ4aSNioE" target="_blank" class="social-btn"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://www.facebook.com/share/14Zyn5f9r9q/" target="_blank" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="mailto:mv.org.tw@gmail.com" class="social-btn"><i class="fa-solid fa-envelope"></i></a>
+                    <a href="https://instagram.com/mvo_org" target="_blank" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.twitch.tv/twmqi" target="_blank" class="social-btn"><i class="fa-brands fa-twitch"></i></a>
+                    <a href="https://discord.gg/6rvS32H8dY" target="_blank" class="social-btn"><i class="fa-brands fa-discord"></i></a>
+                    <a href="https://api.whatsapp.com/send?phone=886918733175" target="_blank" class="social-btn"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://tiktok.com/@tiktok._.young" target="_blank" class="social-btn"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="https://x.com/MQI_6666" target="_blank" class="social-btn"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://github.com/mv-org-tw" target="_blank" class="social-btn"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://web.telegram.org/YOUNGyoung" target="_blank" class="social-btn"><i class="fa-brands fa-telegram"></i></a>
                 </div>
             </div>
         </section>
-
     </div>
 
     <footer>
@@ -236,17 +142,9 @@
 
     <script>
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('active');
-            });
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
-</body>
-</html>
-            <a href="https://github.com/2010young" target="_blank" class="social-btn"><i class="fab fa-github"></i></a>
-        </div>
-    </div>
-
 </body>
 </html>
